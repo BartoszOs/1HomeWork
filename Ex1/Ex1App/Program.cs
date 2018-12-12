@@ -35,8 +35,15 @@ namespace Ex1App
                     Console.WriteLine();
                     Console.WriteLine(" Enter year from range : 1500 - 2100");
                     Console.WriteLine();
-
-                    int year = Convert.ToInt32(Console.ReadLine());
+                    int year;
+                    try
+                    {
+                        year = Convert.ToInt32(Console.ReadLine());
+                    }
+                    catch (Exception)
+                    {
+                        throw;
+                    }
                     Console.WriteLine(TellCentury(year));
                     Console.ReadKey();
                     break;
