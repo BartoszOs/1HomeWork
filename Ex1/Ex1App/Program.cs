@@ -18,18 +18,21 @@ namespace Ex1App
              * 2. Metoda TellHowManyYearsToCentury powinna zwracać liczbę lat do osiągnięcia pełnego wieku od wskazanego roku.
              *    Pierwszy parametr to rok, 2gi to wiek.
              */
-
-            var year = 2000;
-
+            Console.Write("Wprowadź rok :");
+            int year;
+            bool result = int.TryParse(Console.ReadLine(), out year);
             // wynik dla tego przykładu: "Dwudziesty"
-            TellCentury(year);
+            Console.WriteLine(TellCentury(year));
 
             // wynik dla tego przykładu: 1
-            HowManyYearsToCentury(1999, 20);
+            Console.Write("By sprawdzić ile lat do końca danego wieku wprowadź wiek :");
+            int century;
+            bool result2 = int.TryParse(Console.ReadLine(), out century);
+            Console.WriteLine(HowManyYearsToCentury(year, century));
 
             // Aby sprawdzić jakiś wynik - wypisz go na ekranie, o tak
-            var result = "Dwudziesty";
-            Console.WriteLine(result);
+            //var result = "Dwudziesty";
+            //Console.WriteLine(result);
 
             Console.WriteLine("Press any key to exit...");
             Console.ReadLine();
@@ -37,12 +40,25 @@ namespace Ex1App
 
         private static int HowManyYearsToCentury(int year, int century)
         {
-            return 1;
+            return ((century * 100) - (year ));
         }
 
         private static string TellCentury(int year)
         {
-            return "foo";
+            if ((year <= 2100) & (year > 2000))
+                return ("dwudziesty pierwszy");
+            if ((year <= 2000) & (year > 1900))
+                return ("dwudziesty");
+            if ((year <= 1900) & (year > 1800))
+                return ("dziewietnaty");
+            if ((year <= 1800) & (year > 1700))
+                return ("osiemnasty");
+            if ((year <= 1700) & (year > 1600))
+                return ("siedemnasty");
+            if ((year <= 1600) & (year > 1500))
+                return ("szesnasty");
+           else
+                return "Błąd! Podany rok nie jest obsługiwany";
         }
     }
 }
